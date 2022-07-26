@@ -86,7 +86,7 @@
       height: {value: ''},
       systolicbp: {value: ''},
       diastolicbp: {value: ''},
-      temperature: {value: ''}
+      temperature: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
     };
