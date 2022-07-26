@@ -25,10 +25,16 @@
                       }
                     }
                   });
+        
+          var aller = smart.patient.api.fetchAll({
+                    type: 'AllergyIntolerance',})
+            
 
-        $.when(pt, obv).fail(onError);
+        $.when(pt, obv, aller).fail(onError);
 
-        $.when(pt, obv).done(function(patient, obv) {
+        $.when(pt, obv, aller).done(function(patient, obv, allergy) {
+          console.log(allergy)
+          
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
 
@@ -39,7 +45,8 @@
             fname = patient.name[0].given.join(' ');
             lname = patient.name[0].family;
           }
-
+       
+          
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('85354-9'),'8480-6');
           var diastolicbp = getBloodPressureValue(byCodes('85354-9'),'8462-4');
