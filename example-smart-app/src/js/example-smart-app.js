@@ -34,6 +34,16 @@
 
         $.when(pt, obv, aller).done(function(patient, obv, allergy) {
           console.log(allergy);
+          allergy.forEach((element) => {
+            $("#allergies").append(
+              $("<tr />", {
+                append: [
+                  $("<td />", { html: element.code.text }),
+                ],
+              })
+            );
+          });
+          
           
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
